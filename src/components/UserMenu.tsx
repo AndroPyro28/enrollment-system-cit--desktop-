@@ -8,18 +8,23 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Avatar from "./Avatar";
 import { ModeToggle } from "./ModeToggle";
-import { signOut } from "next-auth/react";
 import { capitalizeWords } from "@/lib/utils";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { useNavigate } from "react-router-dom";
 import { SidebarModeSwitch } from "./SidebarModeSwitch";
-import { TGetCurrentUser } from "@/service/user";
+import React from "react";
 
 type UserMenuProps = {
-  currentUser?: TGetCurrentUser | null;
+  currentUser?: {
+    image:string;
+    id: string;
+    name:string
+    role:string
+  }
 };
+
 const UserMenu = ({ currentUser }: UserMenuProps) => {
-  const router = useRouter();
+  const router = useNavigate();
+  
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -49,7 +54,7 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={() =>
-            router.push(`/${currentUser?.role.toLowerCase()}/profile`)
+            router(`/${currentUser?.role.toLowerCase()}/profile`)
           }
         >
           Profile
@@ -60,7 +65,7 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
         <DropdownMenuItem>
           <SidebarModeSwitch />
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => signOut()}>Logout</DropdownMenuItem>
+        <DropdownMenuItem >Logout</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -5,6 +5,8 @@ import ToastProvider from "./ToastProvider";
 import ModalProvider from "./ModalProvider";
 import { ThemeProvider } from "next-themes";
 import { SocketIoProvider } from "./SocketProvider";
+import BaseLayout from "./BaseLayout";
+import DragWindowRegion from "../DragWindowRegion";
 
 const Provider: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
@@ -15,13 +17,15 @@ const Provider: React.FC<React.PropsWithChildren> = ({ children }) => {
         defaultTheme="system"
         enableSystem={true}
         storageKey="enrollment-system"
-      >
-        <SocketIoProvider>
+        >
+        {/* <SocketIoProvider> */}
           <QueryProvider>
               <ModalProvider />
+            <BaseLayout>
               {children}
+            </BaseLayout>
           </QueryProvider>
-        </SocketIoProvider>
+        {/* </SocketIoProvider> */}
       </ThemeProvider>
     </>
   );

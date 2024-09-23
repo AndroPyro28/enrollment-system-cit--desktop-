@@ -44,11 +44,11 @@ export const RegistrationForm = () => {
   ]
 
   return (
-    <div className="w-full h-full rounded-sm border-black-2 px-5 py-5">
+    <div className="w-full h-[700px] overflow-auto rounded-sm border-black-2 px-5 py-5">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex flex-col gap-y-5 px-10 py-10 border-zinc-800 border  rounded-xl"
+          className="flex flex-col gap-y-5 px-10 py-10 border-zinc-800 border  rounded-xl  "
         >
           {
             forms[formPage]
