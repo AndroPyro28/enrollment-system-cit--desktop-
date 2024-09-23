@@ -2,7 +2,7 @@ import React from "react";
 import ToggleTheme from "@/components/ToggleTheme";
 import { useTranslation } from "react-i18next";
 import LangToggle from "@/components/LangToggle";
-
+import { Separator } from "@/components/ui/separator"
 export default function HomePage() {
     const { t } = useTranslation();
 
@@ -12,6 +12,7 @@ export default function HomePage() {
                 <h1 className="text-4xl font-bold">{t("title")}</h1>
                 <LangToggle />
                 <ToggleTheme />
+                <Separator />
             </div>
         </>
     );
