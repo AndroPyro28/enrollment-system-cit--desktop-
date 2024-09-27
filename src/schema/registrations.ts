@@ -33,10 +33,14 @@ export const CreateRegistrationFormSchema = RegistrationFormSchema.extend({
   uploads: UploadSchema
 })
 .extend({
-  is_with_lrn: z.enum(['true', 'false']),
-  is_returnee: z.enum(['true', 'false']),
-  is_4ps: z.enum(['true', 'false']),
-  is_pc: z.enum(['true', 'false']),
+  dob: z.string(),
+  grade_level_to_enroll: z.coerce.number(),
+  age: z.coerce.number()
+  // is_with_lrn: z.enum(['true', 'false']),
+  // is_returnee: z.enum(['true', 'false']),
+  // is_4ps: z.enum(['true', 'false']),
+  // is_pc: z.enum(['true', 'false']),
+  // is_same_address: z.enum(['true', 'false'])
 
 })
 

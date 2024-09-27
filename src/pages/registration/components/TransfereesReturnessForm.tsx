@@ -45,8 +45,8 @@ export const TransfereesReturneesForm:React.FC<TransfereesReturneesFormProps> = 
                         <FormLabel>Last Grade Level Complete</FormLabel>
                         <FormControl>
                           <Input
-                            id="upload"
-                            placeholder="Last Grade Level Complete"
+                            id="last_grade_level_complete"
+                            placeholder="Last Grade Level Complete" {...field}
                           />
                         </FormControl>
                         <FormMessage />
@@ -64,8 +64,8 @@ export const TransfereesReturneesForm:React.FC<TransfereesReturneesFormProps> = 
                         <FormLabel>Last School Year Complete</FormLabel>
                         <FormControl>
                           <Input
-                            id="upload"
-                            placeholder="Last School Year Complete"
+                            id="last_school_year_complete"
+                            placeholder="Last School Year Complete" {...field}
                           />
                         </FormControl>
                         <FormMessage />
@@ -85,8 +85,8 @@ export const TransfereesReturneesForm:React.FC<TransfereesReturneesFormProps> = 
                         <FormLabel>Last School Attended</FormLabel>
                         <FormControl>
                           <Input
-                            id="upload"
-                            placeholder="Last School Attended"
+                            id="last_school_attended"
+                            placeholder="Last School Attended" {...field}
                           />
                         </FormControl>
                         <FormMessage />
@@ -103,7 +103,7 @@ export const TransfereesReturneesForm:React.FC<TransfereesReturneesFormProps> = 
                       <FormItem className="">
                         <FormLabel>School ID</FormLabel>
                         <FormControl>
-                          <Input id="upload" placeholder="School ID" />
+                          <Input id="school_id" placeholder="School ID" {...field}/>
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -135,13 +135,13 @@ export const TransfereesReturneesForm:React.FC<TransfereesReturneesFormProps> = 
                         >
                           <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
-                              <RadioGroupItem value="first" />
+                              <RadioGroupItem value="FIRST" />
                             </FormControl>
                             <FormLabel className="font-normal">1st</FormLabel>
                           </FormItem>
                           <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
-                              <RadioGroupItem value="second" />
+                              <RadioGroupItem value="SECOND" />
                             </FormControl>
                             <FormLabel className="font-normal">2nd</FormLabel>
                           </FormItem>
@@ -154,13 +154,13 @@ export const TransfereesReturneesForm:React.FC<TransfereesReturneesFormProps> = 
                 <div className="flex flex-col items-center w-full">
                   <FormField
                     control={form.control}
-                    name={"street_name"}
-                    key={"street_name"}
+                    name={"track"}
+                    key={"track"}
                     render={({ field }) => (
                       <FormItem className="w-full">
                         <FormLabel>Track</FormLabel>
                         <FormControl>
-                          <Input id="upload" placeholder="Track" />
+                          <Input id="track" placeholder="Track" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -169,13 +169,13 @@ export const TransfereesReturneesForm:React.FC<TransfereesReturneesFormProps> = 
 
                   <FormField
                     control={form.control}
-                    name={"street_name"}
-                    key={"street_name"}
+                    name={"strand"}
+                    key={"strand"}
                     render={({ field }) => (
                       <FormItem className="w-full">
                         <FormLabel>Strand</FormLabel>
                         <FormControl>
-                          <Input id="upload" placeholder="Strand" />
+                          <Input id="strand" placeholder="Strand" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

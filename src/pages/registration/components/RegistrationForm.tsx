@@ -25,6 +25,7 @@ import { LearnersInformationForm } from "./LearnersInformationForm";
 import { TransfereesReturneesForm } from "./TransfereesReturnessForm";
 import { cn } from "@/lib/utils";
 import UploadForm from "./UploadForm";
+import { useMutateProcessor } from "@/hooks/useTanstackQuery";
 
 export const RegistrationForm = () => {
   const form = useForm<CreateRegistrationFormT>({
@@ -32,7 +33,16 @@ export const RegistrationForm = () => {
     defaultValues: {},
     mode: "all",
   });
-  const onSubmit: SubmitHandler<any> = (values) => {};
+
+  const register = useMutateProcessor<CreateRegistrationFormT, unknown>({
+    url: '/',
+    key:['Registration'],
+    method:"POST",
+
+  })
+  const onSubmit: SubmitHandler<CreateRegistrationFormT> = (values) => {
+    register.mutate(values)
+  };
 
   const [formPage, setFormPage] = useState(0)
 
@@ -43,6 +53,7 @@ export const RegistrationForm = () => {
     <UploadForm form={form} />
   ]
 
+  console.log(form.formState.errors)
   return (
     <div className="w-full h-[700px] overflow-auto rounded-sm border-black-2 px-5 py-5">
       <Form {...form}>
