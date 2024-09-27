@@ -25,7 +25,7 @@ const UploadItem:React.FC<UploadItemProps> = ({ label, name, form}) => {
                 render={({ field }) => (
                   <FormItem className="">
                     <label
-                      htmlFor="upload"
+                      htmlFor={name}
                       className=" hover:bg-zinc-200  px-5 transition-all m-auto cursor-pointer py-3 border-zinc-300 border-2 rounded-lg flex flex-col justify-center items-center gap-5 "
                     >
                       <UploadIcon className=" text-gray-400 ml-2 h-4 w-4 " />
@@ -39,7 +39,7 @@ const UploadItem:React.FC<UploadItemProps> = ({ label, name, form}) => {
                     <FormControl>
                       <Input
                         className="hidden"
-                        id="upload"
+                        id={name}
                         type="file"
                         accept="image/*"
                         onChange={(e) => {
@@ -48,6 +48,7 @@ const UploadItem:React.FC<UploadItemProps> = ({ label, name, form}) => {
                             reader.readAsDataURL(e?.target?.files?.[0]);
 
                             reader.onloadend = () => {
+                              console.log(name, "+ value")
                               field.onChange(reader.result);
                             };
                           } else {

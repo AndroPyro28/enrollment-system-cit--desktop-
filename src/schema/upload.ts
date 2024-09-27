@@ -12,11 +12,11 @@ export const FileSchema = z
   );
 
 export const UploadSchema = z.object({
-  form137: FileSchema,
-  birthCertificate: FileSchema,
-  card: FileSchema,
-  applicationForm: FileSchema,
-  picture1x1: FileSchema,
+  form137: z.string().min(1, "required"),
+  birthCertificate: z.string().min(1, "required"),
+  card: z.string().min(1, "required"),
+  applicationForm: z.string().min(1, "required"),
+  picture1x1: z.string().min(1, "required"),
 });
 
 export type TUploadSchema = z.infer<typeof UploadSchema>;
