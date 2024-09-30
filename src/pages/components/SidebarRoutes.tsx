@@ -52,7 +52,7 @@ const routesList: routeListType[] = [
     type: "nested",
     hrefs: [
       {
-        href: '/students',
+        href: '/students/1',
         icon: Users,
         label: 'Students'
       },

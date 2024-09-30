@@ -59,7 +59,7 @@ export const RegistrationForm = () => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex flex-col gap-y-5 px-10 py-10 border-zinc-800 border  rounded-xl  "
+          className="flex flex-col gap-y-5 px-10 py-10  border  rounded-xl  "
         >
           {
             forms[formPage]
