@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import StudentsPage from "./pages/students/page";
 import RegistrationPage from "./pages/registration/page";
 import Provider from "./components/providers/Provider";
+import StudentDetailsPage from "./pages/student-details";
 export default function App() {
     const { i18n } = useTranslation();
 
@@ -19,14 +20,18 @@ export default function App() {
     }, []);
 
     return (
+        <div className="h-[800px] overflow-y-auto overflow-x-hidden">
+
         <Router>
                 <Provider>
             <Routes>
                 <Route path="/students" element={<StudentsPage />} />
                 <Route path="/registration" element={<RegistrationPage />} />
+                <Route path="/students/:id" element={<StudentDetailsPage />} />
             </Routes>
         </Provider>
             </Router>
+        </div>
     );
 }
 
