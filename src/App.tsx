@@ -20,22 +20,20 @@ export default function App() {
     }, []);
 
     return (
-        <div className="h-[800px] overflow-y-auto overflow-x-hidden">
-
-        <Router>
+        <div className="overflow-y-auto max-h-[1050px] overflow-x-hidden">
+            <Router>
                 <Provider>
-            <Routes>
-                <Route path="/students" element={<StudentsPage />} />
-                <Route path="/registration" element={<RegistrationPage />} />
-                <Route path="/students/:id" element={<StudentDetailsPage />} />
-            </Routes>
-        </Provider>
+                    <Routes>
+                        <Route path="/students" element={<StudentsPage />} />
+                        <Route path="/students/:id" element={<StudentDetailsPage />} />
+
+                        <Route path="/registration" element={<RegistrationPage />} />
+                    </Routes>
+                </Provider>
             </Router>
         </div>
     );
 }
 
 const root = createRoot(document.getElementById("app")!);
-root.render(
-    <App />
-);
+root.render(<App />);

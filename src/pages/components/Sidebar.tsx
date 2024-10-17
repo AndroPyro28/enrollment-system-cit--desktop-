@@ -16,10 +16,7 @@ export const Sidebar = ({ currentUser, setOpen }: SidebarProps) => {
       </div>
       <div className="flex flex-col w-full">
       
-        {currentUser?.role && true && (
-          // just for testing
           <SidebarRoutes role={currentUser?.role || ""} setOpen={setOpen} />
-        )}
       </div>
     </div>
   );

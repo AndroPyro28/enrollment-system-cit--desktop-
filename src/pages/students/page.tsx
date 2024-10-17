@@ -1,6 +1,7 @@
 import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
 import StudentsClient from "./components/StudentsClient";
 import React from "react";
+import { Outlet } from "react-router-dom";
 
 
 type StudentsPageProps = {};

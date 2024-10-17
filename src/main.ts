@@ -11,8 +11,8 @@ if (require("electron-squirrel-startup")) {
 function createWindow() {
     const preload = path.join(__dirname, "preload.js");
     const mainWindow = new BrowserWindow({
-        width: 1200,
-        height: 700,
+        width: 1800,
+        height: 1200,
         // closable: true,
         // focusable: false, //THIS IS THE KEY
         // maximizable: true,
@@ -28,14 +28,31 @@ function createWindow() {
         titleBarStyle: "hidden",
     });
     registerListeners(mainWindow);
-
+    // @ts-ignore
+    // @ts-nocheck
     if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
+        // @ts-ignore
+        // @ts-nocheck
         mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
     } else {
         mainWindow.loadFile(
+            // @ts-ignore
+            // @ts-nocheck
             path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`)
         );
     }
+
+    mainWindow.webContents.on('before-input-event', (event, input) => {
+        // Disable F12 and Ctrl+Shift+I for DevTools in production mode
+            if (input.key === 'F12' || (input.control && input.shift && input.key.toLowerCase() === 'i') && !inDevelopment) {
+                event.preventDefault();
+            }
+        });
+    
+      // Open DevTools only in development
+    //   if (inDevelopment) {
+    //     mainWindow.webContents.openDevTools();
+    //   }
 }
 
 app.whenReady().then(createWindow);

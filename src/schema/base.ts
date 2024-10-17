@@ -112,8 +112,8 @@ export const GuardianSchema = z.object({
 // Registration Schema
 export const RegistrationFormSchema = z.object({
   id: z.string(),
-  school_year: z.string().optional(),
-  grade_level_to_enroll: z.number().optional(),
+  school_year: z.string(),
+  grade_level_to_enroll: z.number(),
   is_with_lrn: z.boolean().optional(),
   is_returnee: z.boolean().optional(),
   psa_birth_cert_no: z.string().optional(),

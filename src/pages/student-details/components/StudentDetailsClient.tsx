@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useGenerateQrcode } from "@/hooks/useQrcode";
 import { FormUploadExcelStudentsSchema } from "@/schema/students";
-import { ScanQrCode } from "lucide-react";
+import { Download, ScanQrCode } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 export const StudentDetailsClient = () => {
@@ -15,7 +15,7 @@ export const StudentDetailsClient = () => {
     const section = "Amethyst"
 
     return (
-        <div className="flex flex-col items-center space-y-5 border   p-5 rounded-xl">
+        <div className="flex flex-col items-center space-y-5 border w-[80%] h-[80%] p-5 rounded-xl">
             <div className="w-10 h-10 rounded-full border border-blue-400 flex justify-center items-center">
                 <ScanQrCode className="size-5 text-blue-950"/>
             </div>
@@ -24,8 +24,9 @@ export const StudentDetailsClient = () => {
                     <h1 className="font-semibold text-xl">Student's QR code</h1>
                     <h2 className="text-zinc-600 text-sm">You can download and send this qr code.</h2>
                 </div>
-            <div className="p-3 border rounded-md">
-                <a href={qrUrl} download><img src={qrUrl} className="w-[200px]" alt="qcode-image"/></a>
+            <div className="p-3 border rounded-md flex flex-col justify-center">
+                <img src={qrUrl} className="w-[200px]" alt="qcode-image"/>
+                <a href={qrUrl} className="text-center text-zinc-600 justify-center text-sm flex items-center space-x-1" download> <Download className="size-4" /> <span>Click here to download</span> </a>
             </div>
 
             <div className="flex flex-col space-y-3">

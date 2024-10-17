@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import { StudentDetailsClient } from "./components/StudentDetailsClient";
 import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
 
@@ -19,7 +19,7 @@ const StudentDetailsPage = () => {
 
     return (
         <HydrationBoundary state={dehydrate(queryClient)}>
-            <div className="px-5 py-5 rounded-sm h-[750px] overflow-auto">
+            <div className="px-5 py-5 rounded-sm flex justify-center items-center overflow-auto h-[1000px]">
                 <StudentDetailsClient />
             </div>
         </HydrationBoundary>

@@ -55,7 +55,7 @@ export const RegistrationForm = () => {
 
   console.log(form.formState.errors)
   return (
-    <div className="w-full h-[700px] overflow-auto rounded-sm border-black-2 px-5 py-5">
+    <div className="w-full  overflow-auto rounded-sm border-black-2 px-5 py-5">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}

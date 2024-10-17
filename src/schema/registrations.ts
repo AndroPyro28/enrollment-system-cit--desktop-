@@ -34,7 +34,7 @@ export const CreateRegistrationFormSchema = RegistrationFormSchema.extend({
 })
 .extend({
   dob: z.string(),
-  grade_level_to_enroll: z.coerce.number(),
+  grade_level_to_enroll: z.coerce.number({invalid_type_error:"Required"}),
   age: z.coerce.number()
   // is_with_lrn: z.enum(['true', 'false']),
   // is_returnee: z.enum(['true', 'false']),
