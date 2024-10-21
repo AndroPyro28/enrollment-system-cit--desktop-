@@ -12,7 +12,7 @@ function createWindow() {
     const preload = path.join(__dirname, "preload.js");
     const mainWindow = new BrowserWindow({
         width: 1800,
-        height: 1200,
+        height: 1000,
         // closable: true,
         // focusable: false, //THIS IS THE KEY
         // maximizable: true,

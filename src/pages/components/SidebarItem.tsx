@@ -41,8 +41,7 @@ export const SidebarItem = ({
   };
 
   if (isSimpleRoute) {
-    const isActivePathname =  route.href && pathname.includes(route.href);
-
+    const isActivePathname =  route.href && pathname === route.href;
     return (
       <Link
         to={route.href}
