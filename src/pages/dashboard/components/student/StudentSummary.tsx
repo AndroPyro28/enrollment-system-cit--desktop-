@@ -15,11 +15,11 @@ type StudentSummaryProps = {
 const StudentSummary = ({ data }: StudentSummaryProps) => {
   return (
     <Table>
-      <TableCaption>A list of graduates per year</TableCaption>
+      <TableCaption>A list of student per year level</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead>Year</TableHead>
-          <TableHead>Graduates</TableHead>
+          <TableHead>Year Level</TableHead>
+          <TableHead>Number of students</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
