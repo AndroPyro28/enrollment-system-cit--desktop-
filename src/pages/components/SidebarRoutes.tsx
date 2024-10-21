@@ -33,8 +33,8 @@ const routesList: routeListType[] = [
     id: 1,
     icon: Home,
     type:"simple",
-    label: "Home",
-    href: "/dashboard",
+    label: "Dashboard",
+    href: "/",
     roles: ["ALL"],
   },
   {
@@ -42,7 +42,7 @@ const routesList: routeListType[] = [
     icon: TableProperties,
     type:"simple",
     label: "Registration",
-    href: "registration",
+    href: "/registration",
     roles: ["ALL"],
   },
   {
@@ -57,7 +57,7 @@ const routesList: routeListType[] = [
         label: 'Students'
       },
       {
-        href: '',
+        href: '/teachers',
         icon: Users,
         label: 'Add Teacher'
       },
