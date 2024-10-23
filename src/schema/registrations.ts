@@ -1,7 +1,6 @@
 import { z } from "zod";
 import { GuardianSchema, LearningModalitySchema, RegistrationFormSchema } from "./base";
 import { UploadSchema } from "./upload";
-import { pick } from "query-string/base";
 
 export const CreateRegistrationFormSchema = RegistrationFormSchema
 .pick({
