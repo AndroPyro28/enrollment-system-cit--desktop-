@@ -41,6 +41,7 @@ export const RegistrationForm = () => {
 
   })
   const onSubmit: SubmitHandler<CreateRegistrationFormT> = (values) => {
+    console.log(values)
     register.mutate(values)
   };
 
@@ -53,7 +54,6 @@ export const RegistrationForm = () => {
     <UploadForm form={form} />
   ]
 
-  console.log(form.formState.errors)
   return (
     <div className="w-full  overflow-auto rounded-sm border-black-2 px-5 py-5">
       <Form {...form}>
@@ -64,10 +64,6 @@ export const RegistrationForm = () => {
           {
             forms[formPage]
           }
-            {/* <PersonalInformationForm form={form} />
-            <LearnersInformationForm form={form}/>
-            <TransfereesReturneesForm form={form}/> */}
-            
             <div className={cn("flex justify-between", formPage === 0 && "justify-end")}>
             {
               formPage !== 0 &&
