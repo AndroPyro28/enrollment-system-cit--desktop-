@@ -59,12 +59,12 @@ const routesList: routeListType[] = [
       {
         href: '/teachers',
         icon: Users,
-        label: 'Add Teacher'
+        label: 'Teachers'
       },
       {
-        href: '',
-        icon: Users,
-        label: 'Add Subject Teacher'
+        href: '/year-level',
+        icon: TableProperties,
+        label: 'Year Level'
       },
       {
         href: '',

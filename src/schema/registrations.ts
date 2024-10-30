@@ -18,6 +18,7 @@ export const CreateRegistrationFormSchema = RegistrationFormSchema
   is_returnee:true,
   is_same_address:true,
   is_with_lrn:true,
+  is_pwd:true,
   last_grade_level_complete:true,
   last_name:true,
   last_school_attended:true,
@@ -36,6 +37,7 @@ export const CreateRegistrationFormSchema = RegistrationFormSchema
   municipality:true,
   province:true,
   country:true,
+
   zip_code:true,
 })
 .extend({
