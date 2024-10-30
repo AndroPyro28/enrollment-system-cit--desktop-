@@ -16,121 +16,52 @@ import {
 // import { getDeparments } from "@/queries/department";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { PlusCircle, UserPlus, File } from "lucide-react";
+import { PlusCircle, UserPlus, File, TableOfContents } from "lucide-react";
 // import { Separator } from "@/components/ui/separator";
 import { Loader } from "@/components/ui/loader";
 // import { useModal } from "@/hooks/useModalStore";
 import { useQueryProcessor } from "@/hooks/useTanstackQuery";
 import { Separator } from "@/components/ui/separator";
 import { DataTable } from "@/components/DataTable";
+import { useModal } from "@/hooks/useModalStore";
 // import { SafeUserWithProfileWithDapartmentWithSection } from "@/types/types";
 
-type StudentsClientProps = {};
-const StudentsClient = (props: StudentsClientProps) => {
+type SectionProps = {};
+const Section = (props: SectionProps) => {
   const [globalFilter, setGlobalFilter] = useState("");
-  const [role, setRole] = useState("ALL");
-  const [schoolYear, setSchoolYear] = useState("0");
-  const [department, setDepartment] = useState("ALL");
-//   const { onOpen } = useModal();
-
-//   const queries: getStudentsQuery = {
-//     role,
-//     schoolYear,
-//     department,
-//   };
-
-  // const studentsQuery = useQuery({
-  //   queryKey: ["students", { queries }],
-  //   queryFn: () => getStudents(queries),
-  // });
-
-//   const students = useQueryProcessor<
-//     SafeUserWithProfileWithDapartmentWithSection[]
-//   >(
-//     "/students",
-//     {
-//       role,
-//       schoolYear,
-//       department,
-//     },
-//     ["students/alumni"]
-//   );
-
-//   useEffect(() => {
-//     students.refetch();
-//   }, [role, schoolYear, department]);
-
-//   const departmentsQuery = useQuery({
-//     queryKey: ["departments"],
-//     queryFn: () => getDeparments(),
-//   });
-
-//   if (
-//     // studentsQuery.isError ||
-//     departmentsQuery.isError ||
-//     students.isError
-//   ) {
-//     return <div>Error...</div>;
-//   }
-
-//   if (
-//     // studentsQuery.isPending ||
-//     departmentsQuery.isPending ||
-//     students.isPending
-//   ) {
-//     return <Loader />;
-//   }
+  // const [role, setRole] = useState("ALL");
+  // const [schoolYear, setSchoolYear] = useState("0");
+  // const [department, setDepartment] = useState("ALL");
+  const {onOpen} = useModal()
   return (
     <div className="p-6">
       <div className="flex justify-between items-center space-x-2 pb-4">
-        <h1 className="text-xl font-bold">Students</h1>
+        <h1 className="text-xl font-bold">Section</h1>
         <div className="flex gap-4">
           <div className="flex justify-end gap-x-5">
-            {/* <Button
+            <Button
               className="text-zinc-500 dark:text-white"
               variant={"outline"}
-            //   onClick={() => onOpen("createStudent")}
+              onClick={() => onOpen("createSection")}
             >
               {" "}
-              <UserPlus className="w-5 h-5 mr-2" /> Add student
-            </Button> */}
-            {/* <Button
-              className="text-zinc-500 dark:text-white"
-              variant={"outline"}
-            //   onClick={() => onOpen("importStudents")}
-            >
-              {" "}
-              <File className="w-5 h-5 mr-2" /> Import students
-            </Button> */}
-
-            {/* <Button
-              className="text-zinc-500 dark:text-white"
-              variant={"outline"}
-            //   onClick={() => onOpen("bulkUpdateStudents")}
-            >
-              {" "}
-              <File className="w-5 h-5 mr-2" /> Update students
-            </Button> */}
+              <TableOfContents className="w-5 h-5 mr-2" /> Add section
+            </Button>
+           
           </div>
-          {/* clear filters */}
           <Button
             variant="outline"
             size="sm"
             onClick={() => {
-              setRole("ALL");
-              setSchoolYear("0");
-              setDepartment("ALL");
+              // setRole("ALL");
+              // setSchoolYear("0");
+              // setDepartment("ALL");
             }}
           >
             Clear Filters
           </Button>
 
-          {/* <Link href="/dashboard/students/add">
-            <Button variant="outline" size="sm">
-              <PlusCircle className="h-4 w-4 mr-2" />
-              Add Student
-            </Button>
-          </Link> */}
+       
         </div>
       </div>
       <Separator />
@@ -197,40 +128,19 @@ const StudentsClient = (props: StudentsClientProps) => {
         data={[
           {
             id: 'd1dccgg',
-            email: "Menandroeugenio1028@gmail.com",
-            profile: {
-                studentNumber:"47912657353554555",
-                firstname:"Menandro",
-                middlename:"Talla",
-                lastname:"Eugenio Jr"
-            }
-        },
+            name: "Amethyst",
+            yearLevelId:"Grade 7"
+          },
           {
-            id: 'd2dcc5gg',
-            email: "johndoe@gmail.com",
-            profile: {
-                studentNumber:"47912657356354555",
-                firstname:"john",
-                middlename:"venedict",
-                lastname:"doe"
-            }
-        },
-        {
-          id: 'd3dcc5gg',
-          email: "carlbeningto@gmail.com",
-          profile: {
-              studentNumber:"47912698753554555",
-              firstname:"carl",
-              middlename:"berria",
-              lastname:"beningto"
-          }
-        }
+            id: 'dddaa',
+            name: "Sapphire",
+            yearLevelId:"Grade 7"
+          },
       ]}
         globalFilter={globalFilter}
         setGlobalFilter={setGlobalFilter}
-        // searchKeys={["School Year", "Department"]}
       />
     </div>
   );
 };
-export default StudentsClient;
+export default Section;

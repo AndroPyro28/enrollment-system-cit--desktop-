@@ -67,18 +67,10 @@ const routesList: routeListType[] = [
         label: 'Year Level'
       },
       {
-        href: '',
-        icon: Users,
-        label: 'Add Student'
-      },{
-        href: '',
-        icon: Users,
-        label: 'Add School year'
-      },{
-        href: '',
-        icon: Users,
-        label: 'Add Section'
-      }
+        href: '/section',
+        icon: TableProperties,
+        label: 'Section'
+      },
     ],
     roles: ["ALL"],
   },

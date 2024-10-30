@@ -13,6 +13,7 @@ import Provider from "./components/providers/Provider";
 import StudentDetailsPage from "./pages/student-details";
 import DashBoardHomePage from "./pages/dashboard/page";
 import YearLevelsPage from "./pages/year-level/page";
+import SectionPage from "./pages/section/page";
 export default function App() {
     const { i18n } = useTranslation();
 
@@ -31,6 +32,7 @@ export default function App() {
                         <Route path="/students/:id" element={<StudentDetailsPage />} />
                         <Route path="/registration" element={<RegistrationPage />} />
                         <Route path="/year-level" element={<YearLevelsPage />} />
+                        <Route path="/section" element={<SectionPage />} />
                     </Routes>
                 </Provider>
             </Router>

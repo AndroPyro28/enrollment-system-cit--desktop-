@@ -129,10 +129,19 @@ const YearLevelsClient = (props: YearLevelsClientProps) => {
           {
             id: 'd1dccgg',
             name: "Grade 7",
+            sections: [
+              {},
+              {},
+            ]
           },
           {
             id: 'dddaa',
             name: "Grade 8",
+            sections: [
+              {},
+              {},
+              {},
+            ]
           },
       ]}
         globalFilter={globalFilter}

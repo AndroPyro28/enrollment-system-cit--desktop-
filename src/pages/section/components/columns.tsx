@@ -32,7 +32,7 @@ export const columns: ColumnDef<any>[] = [
     {
         accessorKey: "name",
         header: () => {
-            return <div className=" dark:text-white">Year Level</div>;
+            return <div className=" dark:text-white">Section Name</div>;
         },
         cell: ({ row }) => {
             const name = row.getValue("name") as string;
@@ -40,16 +40,15 @@ export const columns: ColumnDef<any>[] = [
             return <div className=" dark:text-white">{name}</div>;
         },
     },
-
     {
-        accessorKey: "name",
+        accessorKey: "yearLevelId",
         header: () => {
-            return <div className=" dark:text-white">Handled Sections</div>;
+            return <div className=" dark:text-white">Year Level</div>;
         },
         cell: ({ row }) => {
-            const {sections} = row.original
+            const yearLevelId = row.getValue("yearLevelId") as string;
 
-            return <div className=" dark:text-white">{sections.length}</div>;
+            return <div className=" dark:text-white">{yearLevelId}</div>;
         },
     },
 

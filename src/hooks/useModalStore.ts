@@ -1,7 +1,8 @@
 import { create } from "zustand";
 
 export type ModalType = 
-"createYearLevel"
+"createYearLevel" |
+"createSection"
  
 // you can extend this type if you have more modal
 
