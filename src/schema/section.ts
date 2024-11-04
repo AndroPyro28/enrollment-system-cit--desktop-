@@ -2,8 +2,8 @@ import { z } from "zod";
 
 export const SectionSchema = z.object({
   id: z.string(),
-  name: z.string(),
-  yearLevelId: z.string(),
+  name: z.string().min(3, "Required"),
+  yearLevelId: z.string().min(3, "Required"),
   createdAt: z.date(),
   updatedAt: z.date(),
 }) 

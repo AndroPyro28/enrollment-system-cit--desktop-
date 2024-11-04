@@ -59,7 +59,7 @@ const CreateYearLevelModal = () => {
       onSuccess(data, variables, context) {
         toast({
           variant:"default",
-          title:"Year level added"
+          title:"New year level added"
         })
         form.reset();
         onHandleClose();

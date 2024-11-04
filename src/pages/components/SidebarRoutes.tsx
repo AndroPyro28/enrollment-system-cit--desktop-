@@ -3,7 +3,9 @@
 import {
   Briefcase,
   CalendarDays,
+  ChartArea,
   Home,
+  LayoutDashboard,
   Menu,
   MessageCircle,
   TableProperties,
@@ -31,7 +33,7 @@ export type routeListType =
 const routesList: routeListType[] = [
   {
     id: 1,
-    icon: Home,
+    icon: ChartArea,
     type:"simple",
     label: "Dashboard",
     href: "/",

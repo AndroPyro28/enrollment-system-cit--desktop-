@@ -51,7 +51,7 @@ const CreateSectionModal = () => {
             onSuccess(data, variables, context) {
                 toast({
                     variant: "default",
-                    title: "Year level added",
+                    title: "New section added",
                 });
                 form.reset();
                 onHandleClose();
@@ -115,7 +115,7 @@ const CreateSectionModal = () => {
                                             >
                                                 <FormControl>
                                                     <SelectTrigger>
-                                                        <SelectValue placeholder="Select a verified email to display" />
+                                                        <SelectValue placeholder="Select a year level" />
                                                     </SelectTrigger>
                                                 </FormControl>
                                                 <SelectContent>
