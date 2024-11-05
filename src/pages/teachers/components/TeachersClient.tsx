@@ -23,6 +23,7 @@ import { Loader } from "@/components/ui/loader";
 import { useQueryProcessor } from "@/hooks/useTanstackQuery";
 import { Separator } from "@/components/ui/separator";
 import { DataTable } from "@/components/DataTable";
+import { useModal } from "@/hooks/useModalStore";
 // import { SafeUserWithProfileWithDapartmentWithSection } from "@/types/types";
 
 type TeachersClientProps = {};
@@ -31,7 +32,7 @@ const TeachersClient = (props: TeachersClientProps) => {
   const [role, setRole] = useState("ALL");
   const [schoolYear, setSchoolYear] = useState("0");
   const [department, setDepartment] = useState("ALL");
-//   const { onOpen } = useModal();
+  const { onOpen } = useModal();
 
 //   const queries: getTeachersQuery = {
 //     role,
@@ -86,14 +87,14 @@ const TeachersClient = (props: TeachersClientProps) => {
         <h1 className="text-xl font-bold">Teachers</h1>
         <div className="flex gap-4">
           <div className="flex justify-end gap-x-5">
-            {/* <Button
+            <Button
               className="text-zinc-500 dark:text-white"
               variant={"outline"}
-            //   onClick={() => onOpen("createStudent")}
+              onClick={() => onOpen("createTeacher")}
             >
               {" "}
-              <UserPlus className="w-5 h-5 mr-2" /> Add student
-            </Button> */}
+              <UserPlus className="w-5 h-5 mr-2" /> Add teacher
+            </Button>
             {/* <Button
               className="text-zinc-500 dark:text-white"
               variant={"outline"}
