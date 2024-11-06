@@ -17,12 +17,10 @@ import SectionPage from "./pages/section/page";
 import TeachersPage from "./pages/teachers/page";
 export default function App() {
     const { i18n } = useTranslation();
-
     useEffect(() => {
         syncThemeWithLocal();
         updateAppLanguage(i18n);
     }, []);
-
     return (
         <div className="overflow-y-auto max-h-[1050px] overflow-x-hidden">
             <Router>

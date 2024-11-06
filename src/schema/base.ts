@@ -164,6 +164,23 @@ export const RegistrationFormSchema = z.object({
   
 }) 
 
+export const YearLevelSchema = z.object({
+  id: z.string(),
+  name: z.string().min(3, "Required"),
+  createdAt: z.date(),
+  updatedAt: z.date(),
+})
+
+export const SectionSchema = z.object({
+  id: z.string(),
+  name: z.string().min(3, "Required"),
+  yearLevelId: z.string().min(3, "Required"),
+  createdAt: z.date(),
+  updatedAt: z.date(),
+})
+
+
+
 // types
 export type UserT = z.infer<typeof UserSchema>;
 
@@ -175,3 +192,5 @@ export type LearningModalityT = z.infer<typeof LearningModalitySchema>;
 export type AddressT = z.infer<typeof AddressSchema>;
 export type GuardianT = z.infer<typeof GuardianSchema>;
 export type RegistrationFormT = z.infer<typeof RegistrationFormSchema>;
+export type TSectionSchema = z.infer<typeof SectionSchema>;
+export type TYearLevelSchema = z.infer<typeof YearLevelSchema>;

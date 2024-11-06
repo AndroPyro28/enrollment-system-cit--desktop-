@@ -24,6 +24,7 @@ import { useQueryProcessor } from "@/hooks/useTanstackQuery";
 import { Separator } from "@/components/ui/separator";
 import { DataTable } from "@/components/DataTable";
 import { useModal } from "@/hooks/useModalStore";
+import { TeacherT } from "@/schema/teacher";
 // import { SafeUserWithProfileWithDapartmentWithSection } from "@/types/types";
 
 type TeachersClientProps = {};
@@ -45,17 +46,13 @@ const TeachersClient = (props: TeachersClientProps) => {
   //   queryFn: () => getTeachers(queries),
   // });
 
-//   const Teachers = useQueryProcessor<
-//     SafeUserWithProfileWithDapartmentWithSection[]
-//   >(
-//     "/Teachers",
-//     {
-//       role,
-//       schoolYear,
-//       department,
-//     },
-//     ["Teachers/alumni"]
-//   );
+  const teachers = useQueryProcessor<TeacherT[]>({
+    url:'/teachers',
+    key:['teachers'],
+    queryParams: {
+      role: "teacher"
+    }
+  })
 
 //   useEffect(() => {
 //     Teachers.refetch();
@@ -74,13 +71,12 @@ const TeachersClient = (props: TeachersClientProps) => {
 //     return <div>Error...</div>;
 //   }
 
-//   if (
-//     // TeachersQuery.isPending ||
-//     departmentsQuery.isPending ||
-//     Teachers.isPending
-//   ) {
-//     return <Loader />;
-//   }
+  if (
+    teachers.isPending
+  ) {
+    return <Loader />;
+  }
+
   return (
     <div className="p-6">
       <div className="flex justify-between items-center space-x-2 pb-4">
@@ -195,38 +191,7 @@ const TeachersClient = (props: TeachersClientProps) => {
       </div>
       <DataTable
         columns={columns}
-        data={[
-          {
-            id: 'd1dccgg',
-            email: "Menandroeugenio1028@gmail.com",
-            profile: {
-                studentNumber:"47912657353554555",
-                firstname:"Menandro",
-                middlename:"Talla",
-                lastname:"Eugenio Jr"
-            }
-        },
-          {
-            id: 'd2dcc5gg',
-            email: "johndoe@gmail.com",
-            profile: {
-                studentNumber:"47912657356354555",
-                firstname:"john",
-                middlename:"venedict",
-                lastname:"doe"
-            }
-        },
-        {
-          id: 'd3dcc5gg',
-          email: "carlbeningto@gmail.com",
-          profile: {
-              studentNumber:"47912698753554555",
-              firstname:"carl",
-              middlename:"berria",
-              lastname:"beningto"
-          }
-        }
-      ]}
+        data={teachers.data || []}
         globalFilter={globalFilter}
         setGlobalFilter={setGlobalFilter}
         // searchKeys={["School Year", "Department"]}

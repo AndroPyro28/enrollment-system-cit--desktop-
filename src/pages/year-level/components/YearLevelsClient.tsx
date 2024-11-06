@@ -24,6 +24,7 @@ import { useQueryProcessor } from "@/hooks/useTanstackQuery";
 import { Separator } from "@/components/ui/separator";
 import { DataTable } from "@/components/DataTable";
 import { useModal } from "@/hooks/useModalStore";
+import { TYearLevelSchemaWithSection } from "@/schema/year-level";
 // import { SafeUserWithProfileWithDapartmentWithSection } from "@/types/types";
 
 type YearLevelsClientProps = {};
@@ -32,7 +33,17 @@ const YearLevelsClient = (props: YearLevelsClientProps) => {
   // const [role, setRole] = useState("ALL");
   // const [schoolYear, setSchoolYear] = useState("0");
   // const [department, setDepartment] = useState("ALL");
+
+  const yearLevels = useQueryProcessor<TYearLevelSchemaWithSection[]>({
+    url:'/year-level',
+    key:['year-level'],
+  })
+
   const {onOpen} = useModal()
+  if (yearLevels.isPending ) {
+    return <Loader />;
+  }
+
   return (
     <div className="p-6">
       <div className="flex justify-between items-center space-x-2 pb-4">
@@ -125,25 +136,7 @@ const YearLevelsClient = (props: YearLevelsClientProps) => {
       </div>
       <DataTable
         columns={columns}
-        data={[
-          {
-            id: 'd1dccgg',
-            name: "Grade 7",
-            sections: [
-              {},
-              {},
-            ]
-          },
-          {
-            id: 'dddaa',
-            name: "Grade 8",
-            sections: [
-              {},
-              {},
-              {},
-            ]
-          },
-      ]}
+        data={yearLevels?.data || []}
         globalFilter={globalFilter}
         setGlobalFilter={setGlobalFilter}
       />

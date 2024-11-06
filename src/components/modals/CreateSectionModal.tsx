@@ -13,13 +13,14 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../ui/input";
-import { Loader2 } from "../ui/loader";
+import { Loader, Loader2 } from "../ui/loader";
 import { useModal } from "@/hooks/useModalStore";
-import { useMutateProcessor } from "@/hooks/useTanstackQuery";
+import { useMutateProcessor, useQueryProcessor } from "@/hooks/useTanstackQuery";
 import { CreateSectionSchema, TCreateSectionSchema } from "@/schema/section";
 import { Checkbox } from "../ui/checkbox";
 import { useToast } from "../ui/use-toast";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+import { TYearLevelSchemaWithSection } from "@/schema/year-level";
 
 const CreateSectionModal = () => {
     const { isOpen, type, onClose, data } = useModal();
@@ -39,12 +40,23 @@ const CreateSectionModal = () => {
     });
 
     const CreateSection = useMutateProcessor<TCreateSectionSchema, unknown>({
-        url: "/section",
+        url: "/sections",
         method: "POST",
-        key: ["section"],
+        key: ["sections"],
     });
 
     const { toast } = useToast();
+
+    const yearLevels = useQueryProcessor<TYearLevelSchemaWithSection[]>({
+        url:'/year-level',
+        key:['year-level'],
+        options: {
+            enabled: isModalOpen
+        }
+      })
+
+      const yearLevelIds = yearLevels.data?.map((yl) => ({id:yl.id, name: yl.name}))
+
 
     const onSubmit: SubmitHandler<TCreateSectionSchema> = async (values) => {
         CreateSection.mutate(values, {
@@ -87,12 +99,12 @@ const CreateSectionModal = () => {
                                     render={({ field }) => (
                                         <FormItem className="w-full">
                                             <FormLabel className="text-xs font-bold uppercase text-zinc-500 dark:text-zinc-400">
-                                                Year level
+                                                Name
                                             </FormLabel>
                                             <FormControl>
                                                 <Input
                                                     className="focus-visible:ring-0 focus-visible:ring-offset-0"
-                                                    placeholder={`Enter year level`}
+                                                    placeholder={`Enter section name`}
                                                     {...field}
                                                 />
                                             </FormControl>
@@ -101,8 +113,8 @@ const CreateSectionModal = () => {
                                     )}
                                 />
                             </div>
-
-                            <div className="w-full">
+                            {
+                                yearLevels.isPending ? <Loader /> : <div className="w-full">
                                 <FormField
                                     control={form.control}
                                     name="yearLevelId"
@@ -119,9 +131,9 @@ const CreateSectionModal = () => {
                                                     </SelectTrigger>
                                                 </FormControl>
                                                 <SelectContent>
-                                                    <SelectItem value="Grade 7">Grade 7</SelectItem>
-                                                    <SelectItem value="Grade 8">Grade 8</SelectItem>
-                                                    <SelectItem value="Grade 9">Grade 9</SelectItem>
+                                                    {
+                                                        yearLevelIds?.map((yl) => <SelectItem value={yl.id}>{yl.name}</SelectItem> )
+                                                    }
                                                 </SelectContent>
                                             </Select>
                                             <FormMessage />
@@ -129,6 +141,7 @@ const CreateSectionModal = () => {
                                     )}
                                 />
                             </div>
+                            }
                             <DialogFooter className="py-4">
                                 <Button
                                     variant={"default"}

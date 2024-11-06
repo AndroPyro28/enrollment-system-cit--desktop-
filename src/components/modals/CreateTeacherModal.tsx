@@ -43,9 +43,9 @@ const CreateTeacherModal = () => {
     });
 
     const createTeacher = useMutateProcessor<TCreateTeacherSchema, unknown>({
-        url: "/teacher",
+        url: "/teachers",
         method: "POST",
-        key: ["teacher"],
+        key: ["teachers"],
     });
 
     const { toast } = useToast();

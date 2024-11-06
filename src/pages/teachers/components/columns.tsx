@@ -16,7 +16,8 @@ import Avatar from "@/components/Avatar";
 import { useToast } from "@/components/ui/use-toast";
 import React from "react";
 import { Link } from "react-router-dom";
-export const columns: ColumnDef<any>[] = [
+import { TeacherT } from "@/schema/teacher";
+export const columns: ColumnDef<TeacherT>[] = [
     // {
     //   id: "counter",
     //   header: () => {
@@ -40,64 +41,7 @@ export const columns: ColumnDef<any>[] = [
             return <div className="sr-only dark:text-white">{id}</div>;
         },
     },
-    {
-        accessorKey: "len",
-        accessorFn: (row) => {
-            const studentNumber = row.profile.studentNumber;
-            return studentNumber;
-        },
-        header: ({ column }) => {
-            return (
-                <Button
-                    variant="ghost"
-                    className="flex justify-center dark:text-white"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                >
-                    LRN
-                    <ArrowUpDown className="ml-2 h-4 w-4" />
-                </Button>
-            );
-        },
-        cell: ({ row }) => {
-            const studentNumber = row.original.profile.studentNumber;
-            return <div className="flex justify-center dark:text-white">{studentNumber}</div>;
-        },
-    },
-    {
-        accessorKey: "fullname",
-        accessorFn: (row) => {
-            const firstname = row.profile.firstname;
-            const middlename = row.profile.middlename?.charAt(0);
-            const lastname = row.profile.lastname;
-            const fullname = `${firstname} ${middlename}. ${lastname}`;
 
-            return fullname;
-        },
-        header: ({ column }) => {
-            return (
-                <Button
-                    variant="ghost"
-                    className="dark:text-white"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                >
-                    Full Name
-                    <ArrowUpDown className="ml-2 h-4 w-4" />
-                </Button>
-            );
-        },
-        cell: ({ row }) => {
-            const firstname = row.original.profile.firstname;
-            const middlename = row.original.profile.middlename?.charAt(0);
-            const lastname = row.original.profile.lastname;
-
-            const fullname = `${firstname} ${middlename}. ${lastname}`;
-            return (
-                <div className="flex w-fit justify-start whitespace-nowrap text-left">
-                    {fullname}
-                </div>
-            );
-        },
-    },
     {
         accessorKey: "avatar",
         accessorFn: (row) => {
@@ -126,9 +70,44 @@ export const columns: ColumnDef<any>[] = [
             );
         },
     },
+    
+    {
+        accessorKey: "fullname",
+        accessorFn: (row) => {
+            const firstname = row.profile?.first_name;
+            const middlename = row.profile?.middle_name?.charAt(0);
+            const lastname = row.profile?.last_name;
+            const fullname = `${firstname} ${middlename}. ${lastname}`;
+
+            return fullname;
+        },
+        header: ({ column }) => {
+            return (
+                <Button
+                    variant="ghost"
+                    className="dark:text-white"
+                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                >
+                    Full Name
+                    <ArrowUpDown className="ml-2 h-4 w-4" />
+                </Button>
+            );
+        },
+        cell: ({ row }) => {
+            const firstname = row.original.profile?.first_name;
+            const middlename = row.original.profile?.middle_name?.charAt(0);
+            const lastname = row.original.profile?.last_name;
+            const fullname = `${firstname} ${middlename}. ${lastname}`;
+            return (
+                <div className="flex w-fit justify-start whitespace-nowrap text-left">
+                    {fullname}
+                </div>
+            );
+        },
+    },
+    
     {
         id: "actions",
-
         cell: ({ row }) => {
             const { id, profile } = row.original;
 
@@ -156,8 +135,7 @@ export const columns: ColumnDef<any>[] = [
                         <DropdownMenuContent align="end">
                             <DropdownMenuItem
                                 onClick={() =>
-                                    profile.studentNumber &&
-                                    onCopy(profile.studentNumber.toString())
+                                    onCopy('insert any data to copy here')
                                 }
                             >
                                 <Copy className="mr-2 h-4 w-4" /> Copy LRN

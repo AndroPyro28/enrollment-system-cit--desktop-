@@ -24,7 +24,7 @@ import { useQueryProcessor } from "@/hooks/useTanstackQuery";
 import { Separator } from "@/components/ui/separator";
 import { DataTable } from "@/components/DataTable";
 import { useModal } from "@/hooks/useModalStore";
-// import { SafeUserWithProfileWithDapartmentWithSection } from "@/types/types";
+import { TSectionSchemaWithYearLevel } from "@/schema/section";
 
 type SectionProps = {};
 const Section = (props: SectionProps) => {
@@ -33,6 +33,15 @@ const Section = (props: SectionProps) => {
   // const [schoolYear, setSchoolYear] = useState("0");
   // const [department, setDepartment] = useState("ALL");
   const {onOpen} = useModal()
+
+  const sections = useQueryProcessor<TSectionSchemaWithYearLevel[]>({
+    url: '/sections',
+    key:['sections'],
+  })
+
+  if (sections.isPending ) {
+    return <Loader />;
+  }
   return (
     <div className="p-6">
       <div className="flex justify-between items-center space-x-2 pb-4">
@@ -125,18 +134,7 @@ const Section = (props: SectionProps) => {
       </div>
       <DataTable
         columns={columns}
-        data={[
-          {
-            id: 'd1dccgg',
-            name: "Amethyst",
-            yearLevelId:"Grade 7"
-          },
-          {
-            id: 'dddaa',
-            name: "Sapphire",
-            yearLevelId:"Grade 7"
-          },
-      ]}
+        data={sections?.data || []}
         globalFilter={globalFilter}
         setGlobalFilter={setGlobalFilter}
       />

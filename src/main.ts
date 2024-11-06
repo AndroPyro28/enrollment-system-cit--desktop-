@@ -3,7 +3,6 @@ import registerListeners from "./helpers/ipc/listeners-register";
 import path from "path";
 
 const inDevelopment = process.env.NODE_ENV === "development";
-
 if (require("electron-squirrel-startup")) {
     app.quit();
 }

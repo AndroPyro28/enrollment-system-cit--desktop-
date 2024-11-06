@@ -16,7 +16,8 @@ import Avatar from "@/components/Avatar";
 import { useToast } from "@/components/ui/use-toast";
 import React from "react";
 import { Link } from "react-router-dom";
-export const columns: ColumnDef<any>[] = [
+import { TYearLevelSchemaWithSection } from "@/schema/year-level";
+export const columns: ColumnDef<TYearLevelSchemaWithSection>[] = [
     
     {
         accessorKey: "id",
@@ -49,14 +50,14 @@ export const columns: ColumnDef<any>[] = [
         cell: ({ row }) => {
             const {sections} = row.original
 
-            return <div className=" dark:text-white">{sections.length}</div>;
+            return <div className=" dark:text-white">{sections?.length || 0}</div>;
         },
     },
 
     {
         id: "actions",
         cell: ({ row }) => {
-            const { id, profile } = row.original;
+            const { id } = row.original;
 
             const onCopy = (id: string) => {
                 const { toast } = useToast();
@@ -66,7 +67,6 @@ export const columns: ColumnDef<any>[] = [
                     title: "Department ID copied to clipboard.",
                     variant: "default",
                 });
-
                 //   toast.success("Department ID copied to clipboard.");
             };
 
@@ -82,8 +82,8 @@ export const columns: ColumnDef<any>[] = [
                         <DropdownMenuContent align="end">
                             <DropdownMenuItem
                                 onClick={() =>
-                                    profile.studentNumber &&
-                                    onCopy(profile.studentNumber.toString())
+                                    
+                                    onCopy("")
                                 }
                             >
                                 <Copy className="mr-2 h-4 w-4" /> Copy LRN

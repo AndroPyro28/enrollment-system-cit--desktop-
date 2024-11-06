@@ -16,8 +16,9 @@ import Avatar from "@/components/Avatar";
 import { useToast } from "@/components/ui/use-toast";
 import React from "react";
 import { Link } from "react-router-dom";
-export const columns: ColumnDef<any>[] = [
-    
+import { TSectionSchemaWithYearLevel } from "@/schema/section";
+
+export const columns: ColumnDef<TSectionSchemaWithYearLevel>[] = [
     {
         accessorKey: "id",
         header: () => {
@@ -36,7 +37,6 @@ export const columns: ColumnDef<any>[] = [
         },
         cell: ({ row }) => {
             const name = row.getValue("name") as string;
-
             return <div className=" dark:text-white">{name}</div>;
         },
     },
@@ -46,16 +46,15 @@ export const columns: ColumnDef<any>[] = [
             return <div className=" dark:text-white">Year Level</div>;
         },
         cell: ({ row }) => {
-            const yearLevelId = row.getValue("yearLevelId") as string;
-
-            return <div className=" dark:text-white">{yearLevelId}</div>;
+            const yearLevel = row.original.yearLevel?.name;
+            return <div className=" dark:text-white">{yearLevel}</div>;
         },
     },
 
     {
         id: "actions",
         cell: ({ row }) => {
-            const { id, profile } = row.original;
+            const { id } = row.original;
 
             const onCopy = (id: string) => {
                 const { toast } = useToast();
@@ -81,8 +80,7 @@ export const columns: ColumnDef<any>[] = [
                         <DropdownMenuContent align="end">
                             <DropdownMenuItem
                                 onClick={() =>
-                                    profile.studentNumber &&
-                                    onCopy(profile.studentNumber.toString())
+                                    onCopy('')
                                 }
                             >
                                 <Copy className="mr-2 h-4 w-4" /> Copy LRN

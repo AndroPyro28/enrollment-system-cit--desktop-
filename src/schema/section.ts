@@ -1,12 +1,18 @@
 import { z } from "zod";
+import { SectionSchema, YearLevelSchema } from "./base";
 
-export const SectionSchema = z.object({
-  id: z.string(),
-  name: z.string().min(3, "Required"),
-  yearLevelId: z.string().min(3, "Required"),
-  createdAt: z.date(),
-  updatedAt: z.date(),
-}) 
+
+
+export const SectionSchemaWithYearLevel = SectionSchema.pick({
+  id:true,
+  name:true,
+  yearLevelId:true,
+  createdAt:true,
+  updatedAt:true,
+})
+.extend({
+  yearLevel: YearLevelSchema.nullable()
+})
 
 export const CreateSectionSchema = SectionSchema.pick({
   name: true,
@@ -15,6 +21,6 @@ export const CreateSectionSchema = SectionSchema.pick({
 
 export const UpdateSectionSchema = SectionSchema.pick({});
 
-export type TSectionSchema = z.infer<typeof SectionSchema>;
+export type TSectionSchemaWithYearLevel = z.infer<typeof SectionSchemaWithYearLevel>;
 export type TCreateSectionSchema = z.infer<typeof CreateSectionSchema>;
 export type TUpdateSectionSchema = z.infer<typeof UpdateSectionSchema>;
