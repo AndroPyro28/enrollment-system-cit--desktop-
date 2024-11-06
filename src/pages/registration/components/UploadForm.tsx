@@ -47,8 +47,8 @@ export const UploadForm:React.FC<UploadFormProps> = ({form}) => {
               return (
                 <UploadItem
                   form={form}
-                  name={item.name}
-                  key={index}
+                  name={`uploads.${item.name}`}
+                  key={`uploads.${item.name}_${index}`}
                   label={item.label}
                 />
               );

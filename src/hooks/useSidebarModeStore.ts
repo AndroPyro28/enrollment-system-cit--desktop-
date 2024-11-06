@@ -10,7 +10,7 @@ export const useSidebarModeStore = create<SidebarModeStore>()(
   devtools(
     persist(
       (set) => ({
-        mode: "mini",
+        mode: "normal", // normal default
         setMode: (mode) => set({ mode }),
       }),
       { name: "sidebar-mode" }

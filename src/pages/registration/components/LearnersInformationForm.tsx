@@ -39,8 +39,9 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                     <FormLabel>School Year</FormLabel>
                     <FormControl>
                       <Input
-                        id="upload"
-                        placeholder="Last Grade Level Complete"
+                        id="school_year"
+                        placeholder="School year"
+                        {...field}
                       />
                     </FormControl>
                     <FormMessage />
@@ -57,8 +58,9 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                     <FormLabel>Grade Level</FormLabel>
                     <FormControl>
                       <Input
-                        id="upload"
-                        placeholder="Last Grade Level Complete"
+                        id="grade_level_to_enroll"
+                        placeholder="Grade level to enroll"
+                        {...field}
                       />
                     </FormControl>
                     <FormMessage />
@@ -81,8 +83,7 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                       <FormLabel className="mt-3">1. With LRN?</FormLabel>
                       <FormControl>
                         <RadioGroup
-                          onValueChange={field.onChange}
-                          defaultValue={"false"}
+                          onValueChange={(value) => field.onChange(value === "true")}
                           className="flex space-x-3 ml-5"
                         >
                           <FormItem className="flex items-center space-x-3 space-y-0">
@@ -115,8 +116,7 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                       </FormLabel>
                       <FormControl>
                         <RadioGroup
-                          onValueChange={field.onChange}
-                          defaultValue={"false"}
+                          onValueChange={(value) => field.onChange(value === "true")}
                           className="flex space-x-3 ml-5"
                         >
                           <FormItem className="flex items-center space-x-3 space-y-0">
@@ -168,7 +168,7 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                     render={({ field }) => (
                       <FormItem className="">
                         <FormControl>
-                          <Input id="upload" />
+                          <Input id="upload" {...field}/>
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -184,7 +184,10 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                     render={({ field }) => (
                       <FormItem className="">
                         <FormControl>
-                          <Input id="upload" className="" />
+                          <Input id="lrn_no" className="" {...field}
+                          />
+                        
+                          
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -203,9 +206,10 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                         <FormLabel>Last Name</FormLabel>
                         <FormControl>
                           <Input
-                            id="upload"
+                            id="last_name"
                             placeholder="Last Name"
                             className=""
+                            {...field}
                           />
                         </FormControl>
                         <FormMessage />
@@ -221,9 +225,10 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                         <FormLabel>First Name</FormLabel>
                         <FormControl>
                           <Input
-                            id="upload"
+                            id="first_name"
                             className=""
                             placeholder="First Name"
+                            {...field}
                           />
                         </FormControl>
                         <FormMessage />
@@ -239,9 +244,10 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                         <FormLabel>Middle Name</FormLabel>
                         <FormControl>
                           <Input
-                            id="upload"
+                            id="middle_name"
                             className=""
                             placeholder="Middle Name"
+                            {...field}
                           />
                         </FormControl>
                         <FormMessage />
@@ -259,9 +265,10 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                         </FormLabel>
                         <FormControl>
                           <Input
-                            id="upload"
+                            id="extension"
                             className=""
                             placeholder="Extension Name"
+                            {...field}
                           />
                         </FormControl>
                         <FormMessage />
@@ -280,7 +287,7 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                           <FormItem className="flex flex-col">
                             <FormLabel>Birthday (mm/dd/yyyy)</FormLabel>
                             <FormControl>
-                              <Input id="upload" className="" />
+                              <Input id="dob" type="date" className="" {...field}/>
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -302,7 +309,7 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                                 >
                                   <FormItem className="flex items-center  space-x-3 space-y-0">
                                     <FormControl>
-                                      <RadioGroupItem value="male" />
+                                      <RadioGroupItem value="MALE" />
                                     </FormControl>
                                     <FormLabel className="font-normal">
                                       male
@@ -310,7 +317,7 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                                   </FormItem>
                                   <FormItem className="flex items-center space-x-3 space-y-0">
                                     <FormControl>
-                                      <RadioGroupItem value="female" />
+                                      <RadioGroupItem value="FEMALE" />
                                     </FormControl>
                                     <FormLabel className="font-normal">
                                       female
@@ -331,8 +338,9 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                               <FormLabel>Age</FormLabel>
                               <FormControl>
                                 <Input
-                                  id="upload"
+                                  id="age"
                                   placeholder="Age"
+                                  {...field}
                                   className=""
                                 />
                               </FormControl>
@@ -351,8 +359,9 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                           <FormItem className="w-full">
                             <FormControl>
                               <Textarea
-                                id="upload"
+                                id="place_of_birth"
                                 placeholder="Place of birth"
+                                {...field}
                                 className="w-full"
                               />
                             </FormControl>
@@ -369,8 +378,9 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                           <FormItem className="w-full">
                             <FormControl>
                               <Textarea
-                                id="upload"
+                                id="mother_tongue"
                                 placeholder="Mother tounge"
+                                {...field}
                                 className="w-full"
                               />
                             </FormControl>
@@ -395,8 +405,7 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                           <FormItem className="space-y-3 flex items-center">
                             <FormControl>
                               <RadioGroup
-                                onValueChange={field.onChange}
-                                defaultValue={"false"}
+                                onValueChange={(value) => field.onChange(value === "true")}
                                 className="flex space-x-3 ml-5"
                               >
                                 <FormItem className="flex items-center space-x-3 space-y-0">
@@ -430,7 +439,7 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                           <FormItem className="mt-2 flex items-center">
                             <FormLabel>if yes please specify</FormLabel>
                             <FormControl>
-                              <Input id="upload" className="" />
+                              <Input id="ipc_name" className="" {...field}/>
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -452,7 +461,7 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                               </span>
                             </FormLabel>
                             <FormControl>
-                              <Input id="upload" className="w-full" />
+                              <Input id="household_id_4ps" className="w-full"{...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -478,8 +487,7 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                       <FormLabel className="mt-3">is the child a learner with disability? </FormLabel>
                       <FormControl>
                         <RadioGroup
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
+                          onValueChange={(value) => field.onChange(value === "true")}
                           className="flex space-x-3 ml-5"
                         >
                           <FormItem className="flex items-center space-x-3 space-y-0">
@@ -506,7 +514,7 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
             </p>
             <FormField
               control={form.control}
-              name="semester"
+              name="disability"
               render={({ field }) => {
                 const items = [
                   {
@@ -553,7 +561,7 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                   },
                   {
                     label: 'special health problem / chronic disease',
-                    value: 'cerebral_palsy'
+                    value: 'special_health_problem/chronic_disease'
                   },
                 ]
                return <FormItem className="space-y-3 flex items-center">
@@ -566,12 +574,12 @@ export const LearnersInformationForm:React.FC<LearnersInformationFormProps> = ({
                     >
                       {
                         items.map(item => (
-                      <FormItem className="flex items-center space-x-3 space-y-0">
-                        <FormControl>
-                          <RadioGroupItem value={item.value} />
-                        </FormControl>
-                        <FormLabel className="font-normal capitalize">{item.label}</FormLabel>
-                      </FormItem>
+                        <FormItem className="flex items-center space-x-3 space-y-0" key={item.value}>
+                          <FormControl>
+                            <RadioGroupItem value={item.value} />
+                          </FormControl>
+                          <FormLabel className="font-normal capitalize">{item.label}</FormLabel>
+                        </FormItem>
                         ))
                       }
                       

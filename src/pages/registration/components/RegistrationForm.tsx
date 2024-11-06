@@ -25,6 +25,7 @@ import { LearnersInformationForm } from "./LearnersInformationForm";
 import { TransfereesReturneesForm } from "./TransfereesReturnessForm";
 import { cn } from "@/lib/utils";
 import UploadForm from "./UploadForm";
+import { useMutateProcessor } from "@/hooks/useTanstackQuery";
 
 export const RegistrationForm = () => {
   const form = useForm<CreateRegistrationFormT>({
@@ -32,7 +33,17 @@ export const RegistrationForm = () => {
     defaultValues: {},
     mode: "all",
   });
-  const onSubmit: SubmitHandler<any> = (values) => {};
+
+  const register = useMutateProcessor<CreateRegistrationFormT, unknown>({
+    url: '/',
+    key:['Registration'],
+    method:"POST",
+
+  })
+  const onSubmit: SubmitHandler<CreateRegistrationFormT> = (values) => {
+    console.log(values)
+    register.mutate(values)
+  };
 
   const [formPage, setFormPage] = useState(0)
 
@@ -44,19 +55,15 @@ export const RegistrationForm = () => {
   ]
 
   return (
-    <div className="w-full h-[700px] overflow-auto rounded-sm border-black-2 px-5 py-5">
+    <div className="w-full  overflow-auto rounded-sm border-black-2 px-5 py-5">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex flex-col gap-y-5 px-10 py-10 border-zinc-800 border  rounded-xl  "
+          className="flex flex-col gap-y-5 px-10 py-10  border  rounded-xl  "
         >
           {
             forms[formPage]
           }
-            {/* <PersonalInformationForm form={form} />
-            <LearnersInformationForm form={form}/>
-            <TransfereesReturneesForm form={form}/> */}
-            
             <div className={cn("flex justify-between", formPage === 0 && "justify-end")}>
             {
               formPage !== 0 &&

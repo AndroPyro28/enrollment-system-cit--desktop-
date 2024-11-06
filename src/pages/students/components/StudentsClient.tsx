@@ -83,7 +83,7 @@ const StudentsClient = (props: StudentsClientProps) => {
   return (
     <div className="p-6">
       <div className="flex justify-between items-center space-x-2 pb-4">
-        <h1 className="text-xl font-bold">STUDENTS</h1>
+        <h1 className="text-xl font-bold">Students</h1>
         <div className="flex gap-4">
           <div className="flex justify-end gap-x-5">
             {/* <Button

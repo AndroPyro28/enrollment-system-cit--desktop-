@@ -3,7 +3,9 @@
 import {
   Briefcase,
   CalendarDays,
+  ChartArea,
   Home,
+  LayoutDashboard,
   Menu,
   MessageCircle,
   TableProperties,
@@ -31,10 +33,10 @@ export type routeListType =
 const routesList: routeListType[] = [
   {
     id: 1,
-    icon: Home,
+    icon: ChartArea,
     type:"simple",
-    label: "Home",
-    href: "/dashboard",
+    label: "Dashboard",
+    href: "/",
     roles: ["ALL"],
   },
   {
@@ -42,7 +44,7 @@ const routesList: routeListType[] = [
     icon: TableProperties,
     type:"simple",
     label: "Registration",
-    href: "registration",
+    href: "/registration",
     roles: ["ALL"],
   },
   {
@@ -57,28 +59,20 @@ const routesList: routeListType[] = [
         label: 'Students'
       },
       {
-        href: '',
+        href: '/teachers',
         icon: Users,
-        label: 'Add Teacher'
+        label: 'Teachers'
       },
       {
-        href: '',
-        icon: Users,
-        label: 'Add Subject Teacher'
+        href: '/year-level',
+        icon: TableProperties,
+        label: 'Year Level'
       },
       {
-        href: '',
-        icon: Users,
-        label: 'Add Student'
-      },{
-        href: '',
-        icon: Users,
-        label: 'Add School year'
-      },{
-        href: '',
-        icon: Users,
-        label: 'Add Section'
-      }
+        href: '/section',
+        icon: TableProperties,
+        label: 'Section'
+      },
     ],
     roles: ["ALL"],
   },

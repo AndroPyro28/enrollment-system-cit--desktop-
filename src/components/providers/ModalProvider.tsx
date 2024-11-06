@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react";
+import CreateYearLevelModal from "../modals/CreateYearLevelModal";
+import CreateSectionModal from "../modals/CreateSectionModal";
+import CreateTeacherModal from "../modals/CreateTeacherModal";
 
 const ModalProvider = () => {
-  const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
-
   return (
     <>
+       <CreateYearLevelModal />
+       <CreateSectionModal />
+       <CreateTeacherModal />
     </>
   );
 };

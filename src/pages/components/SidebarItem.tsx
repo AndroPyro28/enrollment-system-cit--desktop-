@@ -41,8 +41,7 @@ export const SidebarItem = ({
   };
 
   if (isSimpleRoute) {
-    const isActivePathname =  route.href && pathname.includes(route.href);
-
+    const isActivePathname =  route.href && pathname === route.href;
     return (
       <Link
         to={route.href}
@@ -122,7 +121,7 @@ export const SidebarItem = ({
       {isActiveRoute && (
         <div className="flex flex-col w-full ">
           {route.hrefs.map((r, index) => {
-            const isActivePathname =  r.href && pathname.includes(r.href);
+            const isActivePathname =  r.href && pathname == r.href
             const IconHref = r.icon
             return (
               <Link
